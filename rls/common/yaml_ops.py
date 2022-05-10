@@ -24,7 +24,8 @@ def save_config(dicpath: str, config: Dict, filename: str) -> NoReturn:
 def load_config(filename: str, not_find_error=True) -> Dict:
     if os.path.exists(filename):
         with open(filename, 'r', encoding='utf-8') as f:
-            x = yaml.safe_load(f.read())
+            #x = yaml.safe_load(f.read())
+            x = yaml.load(f.read(), Loader=yaml.Loader)
         logger.info(
             colorize(f'load config from {filename} successfully', color='green'))
         return x or {}
